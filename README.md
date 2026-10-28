@@ -13,6 +13,7 @@
 | 2 | 🗄️ | **Danar Rohman Rozaqi** | `20240140233` | Data Modeling (`models/produkModel.js`) & Schema | [@danarrohman](https://github.com) |
 | 3 | 🎨 | **M.Ikhlasul** | `20240140234` | Frontend EJS Templates & Tailwind CSS UI | [@mikhlasul](https://github.com) |
 | 4 | 🧪 | **Anandya Arlys F** | `20240140002` | API Testing, Middleware Logger & Dokumentasi | [@anandyaarlys](https://github.com) |
+| 5 |  | **M Rendra A** | `20240140212` | Success Metrics, Target User / Persona | [mrendraananditya](https://github.com) |
 
 ---
 
