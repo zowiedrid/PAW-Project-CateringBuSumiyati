@@ -10,7 +10,7 @@
 | No | Foto / Inisial | Nama Mahasiswa | NIM | Peran Utama | Akun GitHub |
 |:--:|:--:|:---|:---:|:---|:---|
 | 1 | 👨‍💻 | **Ilham Fadhilah** | `20200140100` | Lead Backend, Arsitektur MVC & Server Express | [@zowiedrid](https://github.com/zowiedrid) |
-| 2 | 🗄️ | **Danar Rohman Rozaqi** | `20240140233` | Data Modeling (`models/produkModel.js`) & Schema | [@danarrohman](https://github.com) |
+| 2 | 🗄️ | **Danar Rohman Rozaqi** | `20240140233` | Data Modeling (`models/produkModel.js`) & Schema | [@Danar09022006)]((https://github.com/Danar09022006)) |
 | 3 | 🎨 | **M.Ikhlasul** | `20240140234` | Frontend EJS Templates & Tailwind CSS UI | [@mikhlasul](https://github.com) |
 | 4 | 🧪 | **Anandya Arlys F** | `20240140002` | API Testing, Middleware Logger & Dokumentasi | [@anandyaarlys](https://github.com) |
 
