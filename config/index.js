@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require('path');
 
 const config = {
@@ -7,6 +8,13 @@ const config = {
   env: process.env.NODE_ENV || 'development',
   logDir: path.join(__dirname, '..', 'logs'),
   logFile: 'logger.md',
+  database: {
+    dialect: process.env.DB_DIALECT || 'postgres',
+    host: process.env.DB_HOST || 'localhost',
+    port: process.env.DB_PORT || 5432,
+    name: process.env.DB_NAME || 'catering_db',
+    user: process.env.DB_USER || 'postgres'
+  },
   kelompok: {
     nama: 'Kelompok 3',
     kelas: 'Kelas A',

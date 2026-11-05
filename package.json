@@ -1,15 +1,20 @@
 {
   "name": "paw-project-catering-bu-sumiyati",
   "version": "1.0.0",
-  "description": "PPAW Week 7: Integrasi Frontend, REST API, dan Middleware Logger - MVC Express.js dengan EJS & Tailwind CSS",
+  "description": "PPAW Week 8: Integrasi Database dan Implementasi CRUD - MVC Express.js dengan PostgreSQL, Sequelize, EJS & Tailwind CSS",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "seed": "node seeders/seed.js"
   },
   "keywords": [
     "paw",
-    "week7",
+    "week8",
+    "crud",
+    "database",
+    "postgresql",
+    "sequelize",
     "express",
     "mvc",
     "ejs",
@@ -22,8 +27,13 @@
   "author": "Kelompok 3 Kelas A - TI UMY",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^18.0.9",
     "ejs": "^3.1.10",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "method-override": "^3.0.0",
+    "pg": "^8.23.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.8"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
