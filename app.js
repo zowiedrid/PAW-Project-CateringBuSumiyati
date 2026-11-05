@@ -1,12 +1,15 @@
 /**
  * Entry Point Utama Aplikasi - Catering Bu Sumiyati
- * PPAW Week 7: Integrasi Frontend, REST API, dan Middleware Logger
+ * PPAW Week 8: Integrasi Database PostgreSQL & Implementasi CRUD Lengkap
  * Berbasis Express.js dengan pola arsitektur Model-View-Controller (MVC)
  */
 
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const methodOverride = require('method-override');
 const config = require('./config');
+const { sequelize, ProdukModel } = require('./models');
 const requestLogger = require('./middlewares/logger');
 const routes = require('./routes');
 
@@ -28,6 +31,9 @@ app.use(requestLogger);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Method Override untuk mendukung PUT dan DELETE dari form HTML
+app.use(methodOverride('_method'));
+
 // Melayani file statis dari folder public
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -46,8 +52,11 @@ app.use((req, res) => {
       pesan: `Endpoint API '${req.method} ${req.originalUrl}' tidak ditemukan.`,
       dokumentasi: {
         status: 'GET /api/status',
-        produk: 'GET /api/produk',
-        detailProduk: 'GET /api/produk/:id'
+        listProduk: 'GET /api/produk',
+        detailProduk: 'GET /api/produk/:id',
+        tambahProduk: 'POST /api/produk',
+        ubahProduk: 'PUT /api/produk/:id',
+        hapusProduk: 'DELETE /api/produk/:id'
       }
     });
   }
@@ -90,17 +99,38 @@ app.use((err, req, res, next) => {
 });
 
 // ==========================================
-// 6. MENJALANKAN SERVER
+// 6. INISIALISASI DATABASE & JALANKAN SERVER
 // ==========================================
-app.listen(config.port, () => {
-  console.log(`\n======================================================`);
-  console.log(`🚀 ${config.appName} — Server Berjalan`);
-  console.log(`📍 URL Lokal   : http://localhost:${config.port}`);
-  console.log(`📦 Status API  : http://localhost:${config.port}/api/status`);
-  console.log(`🍲 Produk API  : http://localhost:${config.port}/api/produk`);
-  console.log(`🧩 Arsitektur  : Model-View-Controller (MVC) + EJS`);
-  console.log(`📝 Log Request : ${path.join(config.logDir, config.logFile)}`);
-  console.log(`======================================================\n`);
-});
+async function startServer() {
+  try {
+    // Autentikasi dan sinkronisasi database
+    console.log('🔄 Memeriksa koneksi database PostgreSQL...');
+    await sequelize.authenticate();
+    console.log(`✅ Database ${config.database.name} terhubung via ${config.database.dialect} di ${config.database.host}:${config.database.port}.`);
+
+    // Inisialisasi tabel dan seed data awal jika tabel kosong
+    await ProdukModel.initAndSeed();
+
+    // Jalankan server
+    app.listen(config.port, () => {
+      console.log(`\n======================================================`);
+      console.log(`🚀 ${config.appName} — Server Berjalan`);
+      console.log(`📍 URL Lokal   : http://localhost:${config.port}`);
+      console.log(`📦 Status API  : http://localhost:${config.port}/api/status`);
+      console.log(`🍲 Produk CRUD : http://localhost:${config.port}/api/produk`);
+      console.log(`🧩 Arsitektur  : Model-View-Controller (MVC) + PostgreSQL`);
+      console.log(`📝 Log Request : ${path.join(config.logDir, config.logFile)}`);
+      console.log(`======================================================\n`);
+    });
+  } catch (error) {
+    console.error('❌ Gagal menghubungkan ke database PostgreSQL:', error.message);
+    console.log('⚠️  Server tetap dijalankan untuk diagnostik status...');
+    app.listen(config.port, () => {
+      console.log(`🚀 Server berjalan di http://localhost:${config.port} (Status DB: GAGAL)`);
+    });
+  }
+}
+
+startServer();
 
 module.exports = app;
