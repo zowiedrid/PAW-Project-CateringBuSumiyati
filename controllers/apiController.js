@@ -26,7 +26,7 @@ const apiController = {
       status: 'online',
       aplikasi: config.appName,
       tagline: config.tagline,
-      versi: '2.0.0 (Week 8 - CRUD & Database)',
+      versi: '3.0.0 (Week 9 - Gemini AI Assistant & CRUD)',
       database: {
         status: dbStatus,
         dialect: config.database.dialect,
@@ -34,6 +34,13 @@ const apiController = {
         port: config.database.port,
         namaDatabase: config.database.name,
         totalTersimpan: totalProduk
+      },
+      aiAssistant: {
+        status: config.gemini.configured ? 'aktif' : 'belum dikonfigurasi',
+        model: config.gemini.modelName,
+        provider: 'Google Gemini',
+        endpoint: 'POST /api/chat',
+        groundingSource: 'PostgreSQL products table'
       },
       uptimeDetik: Math.round(process.uptime()),
       waktuServer: new Date().toISOString(),

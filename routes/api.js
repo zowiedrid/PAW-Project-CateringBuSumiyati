@@ -1,5 +1,6 @@
 const express = require('express');
 const apiController = require('../controllers/apiController');
+const chatRoutes = require('./chat.routes');
 
 const router = express.Router();
 
@@ -22,5 +23,11 @@ router.get('/produk/:id', apiController.getProdukById);
 router.post('/produk', apiController.createProduk);
 router.put('/produk/:id', apiController.updateProduk);
 router.delete('/produk/:id', apiController.deleteProduk);
+
+/**
+ * Endpoint AI Assistant (Google Gemini):
+ * POST /api/chat
+ */
+router.use('/chat', chatRoutes);
 
 module.exports = router;

@@ -56,7 +56,8 @@ app.use((req, res) => {
         detailProduk: 'GET /api/produk/:id',
         tambahProduk: 'POST /api/produk',
         ubahProduk: 'PUT /api/produk/:id',
-        hapusProduk: 'DELETE /api/produk/:id'
+        hapusProduk: 'DELETE /api/produk/:id',
+        chatAI: 'POST /api/chat'
       }
     });
   }
@@ -118,7 +119,8 @@ async function startServer() {
       console.log(`📍 URL Lokal   : http://localhost:${config.port}`);
       console.log(`📦 Status API  : http://localhost:${config.port}/api/status`);
       console.log(`🍲 Produk CRUD : http://localhost:${config.port}/api/produk`);
-      console.log(`🧩 Arsitektur  : Model-View-Controller (MVC) + PostgreSQL`);
+      console.log(`🤖 AI Chat    : http://localhost:${config.port}/api/chat (POST)`);
+      console.log(`🧩 Arsitektur  : Model-View-Controller (MVC) + PostgreSQL + Gemini`);
       console.log(`📝 Log Request : ${path.join(config.logDir, config.logFile)}`);
       console.log(`======================================================\n`);
     });
