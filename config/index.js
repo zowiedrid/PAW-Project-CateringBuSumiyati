@@ -15,6 +15,11 @@ const config = {
     name: process.env.DB_NAME || 'catering_db',
     user: process.env.DB_USER || 'postgres'
   },
+  gemini: {
+    modelName: process.env.GEMINI_MODEL || 'gemini-3.8-flash',
+    storeName: process.env.STORE_NAME || 'Catering Bu Sumiyati',
+    configured: Boolean(process.env.GEMINI_API_KEY)
+  },
   kelompok: {
     nama: 'Kelompok 3',
     kelas: 'Kelas A',
