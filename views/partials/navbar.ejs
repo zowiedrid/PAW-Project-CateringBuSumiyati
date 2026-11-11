@@ -5,37 +5,44 @@
       <!-- Brand & Project Tag -->
       <div class="flex items-center gap-3">
         <a href="/" class="flex items-center gap-2.5 group">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-amber-400 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
             </svg>
           </div>
           <div>
             <span class="text-base font-extrabold text-slate-900 tracking-tight leading-none block"><%= config.appName %></span>
-            <span class="text-[11px] font-semibold text-emerald-600 block leading-tight">PPAW Week 8 · PostgreSQL & CRUD</span>
+            <span class="text-[11px] font-semibold text-emerald-600 block leading-tight">PPAW Week 9 · Google Gemini AI & CRUD</span>
           </div>
         </a>
       </div>
 
       <!-- Navigation Links -->
-      <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
+      <div class="hidden md:flex items-center gap-5 text-sm font-semibold text-slate-600">
         <a href="#katalog" class="hover:text-brand-600 transition-colors">Katalog Menu</a>
+        <a href="#ai-assistant" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 text-xs font-bold transition-colors border border-amber-200">
+          <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+          Tanya Bu Sumiyati AI
+        </a>
         <a href="#api-tester" class="hover:text-brand-600 transition-colors">Live API Tester</a>
         <a href="#kelompok" class="hover:text-brand-600 transition-colors">Tim Pengembang</a>
         <div class="h-4 w-px bg-slate-300"></div>
-        <a href="/api/status" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-mono transition-colors border border-emerald-200">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <a href="/api/status" target="_blank" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-mono transition-colors border border-emerald-200">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
           /api/status
         </a>
-        <a href="/api/produk" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700 text-xs font-mono transition-colors border border-brand-200">
+        <a href="/api/produk" target="_blank" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700 text-xs font-mono transition-colors border border-brand-200">
           /api/produk
         </a>
       </div>
 
       <!-- Mobile Button Badge -->
       <div class="md:hidden flex items-center gap-2">
-        <a href="/api/status" target="_blank" class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-mono rounded-md font-semibold border border-emerald-200">
-          API Status
+        <a href="#ai-assistant" class="px-2.5 py-1 bg-amber-50 text-amber-700 text-xs rounded-md font-bold border border-amber-200">
+          🤖 Chat AI
+        </a>
+        <a href="/api/status" target="_blank" class="px-2 py-1 bg-emerald-50 text-emerald-700 text-xs font-mono rounded-md font-semibold border border-emerald-200">
+          Status
         </a>
       </div>
 
