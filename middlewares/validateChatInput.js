@@ -42,3 +42,4 @@ function validateChatInput(req, res, next) {
 }
 
 module.exports = validateChatInput;
+

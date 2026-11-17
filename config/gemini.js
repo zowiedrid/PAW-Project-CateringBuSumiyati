@@ -26,3 +26,4 @@ module.exports = {
   STORE_NAME,
   isConfigured: Boolean(apiKey)
 };
+

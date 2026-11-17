@@ -13,3 +13,4 @@ const chatController = require('../controllers/chat.controller');
 router.post('/', validateChatInput, chatController.chat);
 
 module.exports = router;
+
