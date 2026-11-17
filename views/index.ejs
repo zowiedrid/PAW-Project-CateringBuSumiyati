@@ -4,7 +4,7 @@
 <main class="flex-grow">
   
   <!-- NOTIFIKASI TOAST CONTAINER -->
-  <div id="toast-container" class="fixed top-20 right-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
+  <div id="toast-container" class="fixed top-20 left-4 right-4 sm:left-auto sm:right-5 z-50 flex flex-col gap-3 pointer-events-none" aria-live="polite"></div>
 
   <!-- HERO SECTION DENGAN STATISTIK & TESTER LIVE REST API -->
   <section class="relative bg-gradient-to-b from-amber-50/70 via-white to-slate-50 border-b border-slate-200/80 pt-12 pb-16 overflow-hidden">
@@ -497,7 +497,7 @@
                     placeholder="Tulis pertanyaan seputar menu katering di sini (maks. 500 karakter)..." 
                     oninput="handleChatInputChange(this)"
                     onkeydown="handleChatKeyDown(event)"
-                    class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-2xl text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 resize-none transition leading-relaxed"></textarea>
+                    class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-2xl text-base sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 resize-none transition leading-relaxed"></textarea>
                   
                   <div class="flex items-center justify-between mt-1 px-1 text-[11px]">
                     <div class="flex items-center gap-2">
@@ -533,9 +533,9 @@
   </section>
 
   <!-- FLOATING CHAT TRIGGER PILL -->
-  <a href="#ai-assistant" class="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 px-4 py-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xs shadow-2xl shadow-amber-500/40 border border-amber-300/30 transition-all transform hover:scale-105 group">
+  <a href="#ai-assistant" aria-label="Buka Tanya Bu Sumiyati AI" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 inline-flex items-center gap-2 px-4 py-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xs shadow-2xl shadow-amber-500/40 border border-amber-300/30 transition-all transform hover:scale-105 group">
     <span class="text-base group-hover:rotate-12 transition-transform">👩‍🍳</span>
-    <span>Tanya Bu Sumiyati AI</span>
+    <span class="hidden sm:inline">Tanya Bu Sumiyati AI</span>
     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
   </a>
 
@@ -544,10 +544,10 @@
     <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden">
       
       <div class="relative z-10 max-w-3xl">
-        <span class="text-xs font-bold text-amber-400 tracking-wider uppercase mb-2 block">PPAW Week 8 · Project Berkelanjutan</span>
+        <span class="text-xs font-bold text-amber-400 tracking-wider uppercase mb-2 block">PPAW Week 9 · Project Berkelanjutan</span>
         <h2 class="text-3xl font-extrabold tracking-tight mb-4">Tim Pengembang <%= config.kelompok.nama %> (<%= config.kelompok.kelas %>)</h2>
         <p class="text-sm text-slate-300 leading-relaxed mb-8">
-          Repository ini dikembangkan secara berkelanjutan untuk mata kuliah <strong>TI-501 Pengembangan Aplikasi Web</strong>. Implementasi Week 8 berhasil mengintegrasikan database PostgreSQL dan seluruh operasi CRUD dari frontend ke backend.
+          Repository ini dikembangkan secara berkelanjutan untuk mata kuliah <strong>TI-501 Pengembangan Aplikasi Web</strong>. Hingga Week 9, project ini telah mengintegrasikan database PostgreSQL, operasi CRUD lengkap, dan asisten AI berbasis Google Gemini yang dibatasi pada konteks katalog menu.
         </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -574,15 +574,15 @@
 <!-- ========================================== -->
 <!-- MODAL 1: TAMBAH MENU BARU (CREATE) -->
 <!-- ========================================== -->
-<div id="modal-create" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm hidden p-4">
-  <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 transform transition-all">
+<div id="modal-create" role="dialog" aria-modal="true" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm hidden p-4 overflow-y-auto">
+  <div class="bg-white rounded-3xl max-w-lg w-full max-h-[92vh] overflow-y-auto p-5 sm:p-8 shadow-2xl border border-slate-200 transform transition-all">
     
     <div class="flex items-center justify-between pb-4 mb-5 border-b border-slate-100">
       <div>
         <h3 class="text-xl font-extrabold text-slate-900">Tambah Menu Baru</h3>
         <p class="text-xs text-slate-500">Data akan langsung disimpan ke database PostgreSQL</p>
       </div>
-      <button onclick="closeCreateModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500">
+      <button type="button" aria-label="Tutup" onclick="closeCreateModal()" class="w-10 h-10 shrink-0 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500">
         ✕
       </button>
     </div>
@@ -590,13 +590,13 @@
     <form id="form-create" onsubmit="handleCreateSubmit(event)" class="space-y-4">
       <div>
         <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Menu *</label>
-        <input type="text" name="nama" id="create-nama" required placeholder="Contoh: Paket Nasi Kuning Cakalang" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none">
+        <input type="text" name="nama" id="create-nama" required placeholder="Contoh: Paket Nasi Kuning Cakalang" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-base sm:text-sm font-medium focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none">
       </div>
 
       <div class="grid grid-cols-2 gap-4">
         <div>
           <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Kategori *</label>
-          <select name="kategori" id="create-kategori" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none">
+          <select name="kategori" id="create-kategori" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-base sm:text-sm font-medium focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none">
             <option value="Nasi Box">Nasi Box</option>
             <option value="Prasmanan">Prasmanan</option>
             <option value="Tumpeng">Tumpeng</option>
@@ -607,30 +607,30 @@
 
         <div>
           <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Harga Paket (Rp) *</label>
-          <input type="number" name="harga" id="create-harga" required min="0" placeholder="Contoh: 32000" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none">
+          <input type="number" name="harga" id="create-harga" required min="0" placeholder="Contoh: 32000" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-base sm:text-sm font-medium focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none">
         </div>
       </div>
 
       <div class="grid grid-cols-2 gap-4">
         <div>
           <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Stok Porsi</label>
-          <input type="number" name="stok" id="create-stok" min="0" value="50" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none">
+          <input type="number" name="stok" id="create-stok" min="0" value="50" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-base sm:text-sm font-medium focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none">
         </div>
 
         <div>
           <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Rating Awal</label>
-          <input type="number" step="0.1" name="rating" id="create-rating" min="1" max="5" value="5.0" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none">
+          <input type="number" step="0.1" name="rating" id="create-rating" min="1" max="5" value="5.0" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-base sm:text-sm font-medium focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none">
         </div>
       </div>
 
       <div>
         <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Deskripsi Menu</label>
-        <textarea name="deskripsi" id="create-deskripsi" rows="2" placeholder="Komposisi lauk, sayuran, dan penyajian..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none"></textarea>
+        <textarea name="deskripsi" id="create-deskripsi" rows="2" placeholder="Komposisi lauk, sayuran, dan penyajian..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-base sm:text-sm font-medium focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none"></textarea>
       </div>
 
       <div>
         <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Keunggulan / Catatan Khusus</label>
-        <input type="text" name="keunggulan" id="create-keunggulan" placeholder="Contoh: Kemasan ramah lingkungan, halal MUI." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none">
+        <input type="text" name="keunggulan" id="create-keunggulan" placeholder="Contoh: Kemasan ramah lingkungan, halal MUI." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-base sm:text-sm font-medium focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none">
       </div>
 
       <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
@@ -649,15 +649,15 @@
 <!-- ========================================== -->
 <!-- MODAL 2: UBAH MENU (UPDATE) -->
 <!-- ========================================== -->
-<div id="modal-edit" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm hidden p-4">
-  <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 transform transition-all">
+<div id="modal-edit" role="dialog" aria-modal="true" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm hidden p-4 overflow-y-auto">
+  <div class="bg-white rounded-3xl max-w-lg w-full max-h-[92vh] overflow-y-auto p-5 sm:p-8 shadow-2xl border border-slate-200 transform transition-all">
     
     <div class="flex items-center justify-between pb-4 mb-5 border-b border-slate-100">
       <div>
         <h3 class="text-xl font-extrabold text-slate-900">Ubah Data Menu</h3>
         <p class="text-xs text-slate-500">Memperbarui record di database via PUT /api/produk/:id</p>
       </div>
-      <button onclick="closeEditModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500">
+      <button type="button" aria-label="Tutup" onclick="closeEditModal()" class="w-10 h-10 shrink-0 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500">
         ✕
       </button>
     </div>
@@ -667,13 +667,13 @@
 
       <div>
         <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Menu *</label>
-        <input type="text" id="edit-nama" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-amber-500 focus:bg-white focus:outline-none">
+        <input type="text" id="edit-nama" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-base sm:text-sm font-medium focus:ring-2 focus:ring-amber-500 focus:bg-white focus:outline-none">
       </div>
 
       <div class="grid grid-cols-2 gap-4">
         <div>
           <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Kategori *</label>
-          <select id="edit-kategori" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-amber-500 focus:bg-white focus:outline-none">
+          <select id="edit-kategori" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-base sm:text-sm font-medium focus:ring-2 focus:ring-amber-500 focus:bg-white focus:outline-none">
             <option value="Nasi Box">Nasi Box</option>
             <option value="Prasmanan">Prasmanan</option>
             <option value="Tumpeng">Tumpeng</option>
@@ -684,30 +684,30 @@
 
         <div>
           <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Harga Paket (Rp) *</label>
-          <input type="number" id="edit-harga" required min="0" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-amber-500 focus:bg-white focus:outline-none">
+          <input type="number" id="edit-harga" required min="0" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-base sm:text-sm font-medium focus:ring-2 focus:ring-amber-500 focus:bg-white focus:outline-none">
         </div>
       </div>
 
       <div class="grid grid-cols-2 gap-4">
         <div>
           <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Stok Porsi</label>
-          <input type="number" id="edit-stok" min="0" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-amber-500 focus:bg-white focus:outline-none">
+          <input type="number" id="edit-stok" min="0" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-base sm:text-sm font-medium focus:ring-2 focus:ring-amber-500 focus:bg-white focus:outline-none">
         </div>
 
         <div>
           <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Terjual</label>
-          <input type="number" id="edit-terjual" min="0" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-amber-500 focus:bg-white focus:outline-none">
+          <input type="number" id="edit-terjual" min="0" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-base sm:text-sm font-medium focus:ring-2 focus:ring-amber-500 focus:bg-white focus:outline-none">
         </div>
       </div>
 
       <div>
         <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Deskripsi Menu</label>
-        <textarea id="edit-deskripsi" rows="2" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-amber-500 focus:bg-white focus:outline-none"></textarea>
+        <textarea id="edit-deskripsi" rows="2" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-base sm:text-sm font-medium focus:ring-2 focus:ring-amber-500 focus:bg-white focus:outline-none"></textarea>
       </div>
 
       <div>
         <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Keunggulan</label>
-        <input type="text" id="edit-keunggulan" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-amber-500 focus:bg-white focus:outline-none">
+        <input type="text" id="edit-keunggulan" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-base sm:text-sm font-medium focus:ring-2 focus:ring-amber-500 focus:bg-white focus:outline-none">
       </div>
 
       <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
@@ -726,7 +726,7 @@
 <!-- ========================================== -->
 <!-- MODAL 3: KONFIRMASI HAPUS (DELETE) -->
 <!-- ========================================== -->
-<div id="modal-delete" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm hidden p-4">
+<div id="modal-delete" role="dialog" aria-modal="true" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm hidden p-4 overflow-y-auto">
   <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl border border-slate-200">
     <div class="w-12 h-12 rounded-full bg-rose-100 text-rose-600 mx-auto flex items-center justify-center mb-4">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>

@@ -12,7 +12,7 @@
           </div>
           <div>
             <span class="text-base font-extrabold text-slate-900 tracking-tight leading-none block"><%= config.appName %></span>
-            <span class="text-[11px] font-semibold text-emerald-600 block leading-tight">PPAW Week 9 · Google Gemini AI & CRUD</span>
+            <span class="hidden sm:block text-[11px] font-semibold text-emerald-600 leading-tight">PPAW Week 9 · Google Gemini AI &amp; CRUD</span>
           </div>
         </a>
       </div>
@@ -36,16 +36,40 @@
         </a>
       </div>
 
-      <!-- Mobile Button Badge -->
-      <div class="md:hidden flex items-center gap-2">
-        <a href="#ai-assistant" class="px-2.5 py-1 bg-amber-50 text-amber-700 text-xs rounded-md font-bold border border-amber-200">
-          🤖 Chat AI
-        </a>
-        <a href="/api/status" target="_blank" class="px-2 py-1 bg-emerald-50 text-emerald-700 text-xs font-mono rounded-md font-semibold border border-emerald-200">
-          Status
-        </a>
-      </div>
+      <!-- Mobile: hamburger -->
+      <button id="nav-toggle" type="button" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobile-menu"
+        class="md:hidden w-11 h-11 -mr-2 flex items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path id="nav-icon-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path><path id="nav-icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
 
+    </div>
+
+    <!-- Mobile menu panel -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4 pt-1 border-t border-slate-100">
+      <div class="flex flex-col text-sm font-semibold text-slate-700">
+        <a href="#katalog" class="px-2 py-3 rounded-lg hover:bg-slate-50">Katalog Menu</a>
+        <a href="#ai-assistant" class="px-2 py-3 rounded-lg hover:bg-amber-50 text-amber-800">🤖 Tanya Bu Sumiyati AI</a>
+        <a href="#api-tester" class="px-2 py-3 rounded-lg hover:bg-slate-50">Live API Tester</a>
+        <a href="#kelompok" class="px-2 py-3 rounded-lg hover:bg-slate-50">Tim Pengembang</a>
+        <div class="flex gap-2 pt-2 px-2">
+          <a href="/api/status" target="_blank" rel="noopener" class="px-3 py-2 rounded-lg bg-emerald-50 text-emerald-700 text-xs font-mono border border-emerald-200">/api/status</a>
+          <a href="/api/produk" target="_blank" rel="noopener" class="px-3 py-2 rounded-lg bg-brand-50 text-brand-700 text-xs font-mono border border-brand-200">/api/produk</a>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
+<script>
+  (function () {
+    var btn = document.getElementById('nav-toggle'), menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+    function set(open) {
+      menu.classList.toggle('hidden', !open);
+      btn.setAttribute('aria-expanded', open);
+      document.getElementById('nav-icon-open').classList.toggle('hidden', open);
+      document.getElementById('nav-icon-close').classList.toggle('hidden', !open);
+    }
+    btn.addEventListener('click', function () { set(menu.classList.contains('hidden')); });
+    menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
+  })();
+</script>

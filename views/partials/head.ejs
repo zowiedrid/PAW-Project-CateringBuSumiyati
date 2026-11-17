@@ -41,5 +41,10 @@
       }
     }
   </script>
+  <style>
+    :focus-visible { outline: 2px solid #f59e0b; outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+    section[id] { scroll-margin-top: 5rem; }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">

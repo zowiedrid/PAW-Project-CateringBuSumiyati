@@ -33,7 +33,7 @@ const homeController = {
         : 0;
 
       res.render('index', {
-        judul: `${config.appName} — PPAW Week 8 (CRUD & Database)`,
+        judul: `${config.appName} — PPAW Week 9 (Gemini AI & CRUD)`,
         config: config,
         produk: daftarProduk,
         kategoriList: kategoriList,
