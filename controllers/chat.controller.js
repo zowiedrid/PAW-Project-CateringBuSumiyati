@@ -28,10 +28,12 @@ async function chat(req, res) {
     });
   } catch (error) {
     console.error('❌ [CHAT CONTROLLER ERROR]:', error.message);
-    return res.status(500).json({
-      success: false,
-      message: 'Gagal menghubungi asisten AI, silakan coba lagi beberapa saat.',
-      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+    return res.status(200).json({
+      success: true,
+      message: 'Respon fallback asisten katering',
+      data: {
+        reply: 'Halo Kak! 😊 Mohon maaf jaringan AI sedang mengalami kepadatan lalu lintas. Untuk pilihan menu Catering Bu Sumiyati, kami menyediakan Paket Nasi Box Ayam Bakar Madu (Rp 28.000), Nasi Kotak Rendang (Rp 38.000), Tumpeng Kuning Komplit (Rp 450.000), Prasmanan Tradisional Joglo (Rp 65.000), dan Snack Box (Rp 16.500). Ada yang bisa Bu Sumiyati bantu siapkan untuk acara Kakak?'
+      }
     });
   }
 }
